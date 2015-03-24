@@ -18,7 +18,7 @@ class ControllerPaymentG2APay extends Controller {
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-		
+
 		$data['entry_environment'] = $this->language->get('entry_environment');
 		$data['entry_secret'] = $this->language->get('entry_secret');
 		$data['entry_api_hash'] = $this->language->get('entry_api_hash');
@@ -27,7 +27,7 @@ class ControllerPaymentG2APay extends Controller {
 		$data['entry_order_status'] = $this->language->get('entry_order_status');
 		$data['g2apay_environment_live'] = $this->language->get('g2apay_environment_live');
 		$data['g2apay_environment_test'] = $this->language->get('g2apay_environment_test');
-		
+
 		$data['text_edit'] = $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
@@ -58,7 +58,7 @@ class ControllerPaymentG2APay extends Controller {
 		} else {
 			$data['error_api_hash'] = '';
 		}
-		
+
 		if (isset($this->request->post['g2apay_order_status_id'])) {
 			$data['g2apay_order_status_id'] = $this->request->post['g2apay_order_status_id'];
 		} else {
@@ -81,7 +81,7 @@ class ControllerPaymentG2APay extends Controller {
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('payment/g2apay', 'token=' . $this->session->data['token'], 'SSL')
 		);
-		
+
 		$this->load->model('localisation/order_status');
 		$data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
@@ -94,21 +94,25 @@ class ControllerPaymentG2APay extends Controller {
 		} else {
 			$data['g2apay_environment'] = $this->config->get('g2apay_environment');
 		}
+
 		if (isset($this->request->post['g2apay_secret'])) {
 			$data['g2apay_secret'] = $this->request->post['g2apay_secret'];
 		} else {
 			$data['g2apay_secret'] = $this->config->get('g2apay_secret');
 		}
+
 		if (isset($this->request->post['g2apay_api_hash'])) {
 			$data['g2apay_api_hash'] = $this->request->post['g2apay_api_hash'];
 		} else {
 			$data['g2apay_api_hash'] = $this->config->get('g2apay_api_hash');
 		}
+
 		if (isset($this->request->post['g2apay_ipn_uri'])) {
 			$data['g2apay_ipn_uri'] = $this->request->post['g2apay_ipn_uri'];
 		} else {
 			$data['g2apay_ipn_uri'] = $this->config->get('g2apay_ipn_uri');
 		}
+
 		if (isset($this->request->post['g2apay_status'])) {
 			$data['g2apay_status'] = $this->request->post['g2apay_status'];
 		} else {

@@ -24,41 +24,43 @@
         <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_edit; ?></h3>
       </div>
       <div class="panel-body">
-        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-skrill" class="form-horizontal">
+        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-g2apay" class="form-horizontal">
           <div class="form-group">
-            <label class="col-sm-2 control-label"><?php echo $entry_environment; ?></label>
+            <label class="col-sm-2 control-label" for="input-environment"><?php echo $entry_environment; ?></label>
             <div class="col-sm-10">
-              <?php if (!$g2apay_environment) { ?>
-                <?php echo $g2apay_environment_live; ?> <input type="radio" name="g2apay_environment" value="1" id="input-secret" />
-                <?php echo $g2apay_environment_test; ?> <input type="radio" name="g2apay_environment" value="0" id="input-secret" checked="checked" />
-              <?php } else { ?>
-                <?php echo $g2apay_environment_live; ?> <input type="radio" name="g2apay_environment" value="1" id="input-secret" checked="checked" />
-                <?php echo $g2apay_environment_test; ?> <input type="radio" name="g2apay_environment" value="0" id="input-secret" />
-              <?php } ?>
+              <select name="g2apay_environment" class="form-control" id="input-environment">
+                <?php if ($g2apay_environment) { ?>
+                  <option value="1" selected="selected"><?php echo $g2apay_environment_live; ?></option>
+                  <option value="0"><?php echo $g2apay_environment_test; ?></option>
+                <?php } else { ?>
+                  <option value="1"><?php echo $g2apay_environment_live; ?></option>
+                  <option value="0" selected="selected"><?php echo $g2apay_environment_test; ?></option>
+                <?php } ?>
+              </select>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-secret"><?php echo $entry_secret; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="g2apay_secret" value="<?php echo $g2apay_secret; ?>" placeholder="<?php echo $entry_secret; ?>" id="input-email" class="form-control" />
+              <input type="text" name="g2apay_secret" value="<?php echo $g2apay_secret; ?>" placeholder="<?php echo $entry_secret; ?>" id="input-secret" class="form-control" />
               <?php if ($error_secret) { ?>
               <div class="text-danger"><?php echo $error_secret; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-secret"><?php echo $entry_api_hash; ?></label>
+            <label class="col-sm-2 control-label" for="input-api-hash"><?php echo $entry_api_hash; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="g2apay_api_hash" value="<?php echo $g2apay_api_hash; ?>" placeholder="<?php echo $entry_api_hash; ?>" id="input-email" class="form-control" />
+              <input type="text" name="g2apay_api_hash" value="<?php echo $g2apay_api_hash; ?>" placeholder="<?php echo $entry_api_hash; ?>" id="input-api-hash" class="form-control" />
               <?php if ($error_api_hash) { ?>
               <div class="text-danger"><?php echo $error_api_hash; ?></div>
               <?php } ?>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-secret"><?php echo $entry_ipn_uri; ?></label>
+            <label class="col-sm-2 control-label" for="input-uri"><?php echo $entry_ipn_uri; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="g2apay_ipn_uri" value="<?php echo $g2apay_ipn_uri; ?>" placeholder="<?php echo $entry_ipn_uri; ?>" id="input-email" class="form-control" />
+              <input type="text" name="g2apay_ipn_uri" value="<?php echo $g2apay_ipn_uri; ?>" placeholder="<?php echo $entry_ipn_uri; ?>" id="input-uri" class="form-control" />
             </div>
           </div>
           <div class="form-group">
@@ -94,4 +96,4 @@
     </div>
   </div>
 </div>
-<?php echo $footer; ?> 
+<?php echo $footer; ?>
